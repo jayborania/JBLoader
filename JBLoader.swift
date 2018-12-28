@@ -19,6 +19,8 @@ class JBLoader: NSObject {
             loadView.isOpaque = false
             loadView.backgroundColor = UIColor.clear
             
+            loadView.tag = 999
+            
             viewBack = UIView.init(frame: CGRect.init(x: 80, y: 230, width: 160, height: 50))
             viewBack.backgroundColor = UIColor.black
             viewBack.alpha = 0.7
@@ -60,7 +62,9 @@ class JBLoader: NSObject {
     }
     
     public static func hideLoadingView() {
-        loadView.removeFromSuperview()
-        loadView = nil
+        if loadView != nil {
+            loadView.removeFromSuperview()
+            loadView = nil
+        }
     }
 }
